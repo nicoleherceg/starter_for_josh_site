@@ -11,8 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@800&display=swap" rel="stylesheet">
 
 
-
-
 <title> T>   <?php
   if (function_exists('is_tag') && is_tag()) {
      single_tag_title("Tag Archive for &quot;"); echo '&quot; - '; }
@@ -39,10 +37,8 @@
 </head>
 <body>
 
-<header class="container-fluid smallpage-bg">
-    <div class="container">
-
-
+<header class="container-fluid" style="background-size:cover; height:40vh; background-image: url(<?php the_field('projectheaderbackgroundimage') ?>);">
+  
     <nav class="navbar navbar-expand-md navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="#"> <span class="josh">JOSH</span> <span class="orange">WHITKIN</span></a>
@@ -71,9 +67,10 @@
   </div> 
 
 </nav>
-<div class="smallpage-tag">
-<h1 class="smallpage-title"> Projects </h1>
-</div>
+<div class="smallpage-tag"><!-- div that holds the content in the middle of the page-->
+<h1 class="smallpage-title"><?php the_field('projectsheadertitle'); ?> </h1>
+              </div><!-- container-->
+
 <?php wp_head(); ?> <!-- very important that this is added-->
 
 </header>

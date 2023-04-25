@@ -6,6 +6,9 @@ function load_my_scripts() {
   wp_enqueue_script( 'boot2','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js', array('jquery'));
   wp_enqueue_script( 'boot3','https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js', array('jquery'));
  
+  wp_enqueue_script( 'gsap-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js', array(), false, true );
+  wp_enqueue_script( 'gsap-js-custom', get_stylesheet_directory_uri() . '/script1.js', array(), false, true );
+
   wp_enqueue_style( 'style-css', get_template_directory_uri() . '/style.css' );
   wp_enqueue_style( 'test', get_stylesheet_directory_uri() . '/responsive.css' );
 
@@ -27,4 +30,35 @@ register_nav_menus( array(
 register_nav_menus( array(
     'primary' => __( 'Primary Menu', 'top-menu' ),
 ) );
+?>
+<?php
+add_theme_support('post-thumbnails'); 
+?>
+<?php
+function footer_left() {
+
+  register_sidebar( array(
+    'name'          => 'footer-left',
+    'id'            => 'footer-l',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>',
+  
+  ) );
+  
+}  
+add_action( 'widgets_init', 'footer_left' );
+?>
+<?php
+function footer_right() {
+
+  register_sidebar( array(
+    'name'          => 'footer-right',
+    'id'            => 'footer-r',
+    'before_widget' => '<div>',
+    'after_widget'  => '</div>',
+  
+  ) );
+
+}
+add_action( 'widgets_init', 'footer_right' );
 ?>
